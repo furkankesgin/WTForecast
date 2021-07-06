@@ -1,4 +1,4 @@
-function convertTemp(temp, tempUnit){
+export function convertTemp(temp, tempUnit){
     // convert to Fahrenheit
     if(tempUnit === "F"){
         temp = temp * 9/5 - 459.67;
