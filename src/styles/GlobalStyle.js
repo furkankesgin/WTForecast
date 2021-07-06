@@ -53,11 +53,15 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .forecastImage{
-    
-    border: 1px solid green;
     border-radius: 50%;
     margin:0.3rem;
-    background-color: #007bff;
+    background-color: #bababa;
+    width: 90%;
+    height: 60%;
+    img{
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .flip-card {
@@ -70,21 +74,28 @@ const GlobalStyle = createGlobalStyle`
 }
 .front, .back {
   text-align: center;
-  margin-top: -.3rem;
+  margin-top: -.8rem;
   position: absolute;
-  width: 110%; height: 110%;
+  width: 110%; height: 120%;
   transition: transform 1s;
   backface-visibility:hidden;
   background-color: #585858;
   border-radius: .5rem;
   padding: .5rem 0;
+}
 
+.front{
+    h6{
+        margin-top: .2rem;
+        font-size: .6rem;
+    }
 }
 .back { 
   transform: rotateY(180deg); 
+  
 
   h6{
-      font-size: x-small;
+      font-size: small;
       color: #58bbff;
   }
   h3{
@@ -96,6 +107,8 @@ const GlobalStyle = createGlobalStyle`
     &:nth-last-child(1){
       background-color: #191d2b;
       border-radius: 5px;
+      /* margin-top: .2rem; */
+      padding: .2rem;
     }
   }
 }

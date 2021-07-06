@@ -1,10 +1,9 @@
 import {convertTemp} from "../../helpers/convertTemp"
+import { weekDay } from "../../helpers/weekDays";
+
 const Card2Background = (props) => {
     var today = new Date(),
-
-    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()+ "-" + today.getTime();
-
-   console.log(date);
+    day = today.getDay();
     var my_key=1;
 
     
@@ -19,22 +18,28 @@ const Card2Background = (props) => {
                             <img src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt='vcv'></img>
                         </div>
                     <h5>{convertTemp(weather.main.temp,"C")+"˚C"}</h5>
+                    <h6>{(weekDay(new Date(weather.dt * 1000).getDay()))}</h6>
                 </div>
                 <div className="back">
                     <div className="bg-backcard">
                     <h6>Temp</h6>
                     <h3>{convertTemp(weather.main.temp,"C")+"˚C"}</h3>
                     </div>
+
+
                     <div className="bg-backcard">
                     <h6>Feels</h6>
                     <h3>{convertTemp(weather.main.feels_like,"C")+"˚C"}</h3>
                     </div>
+
+
                     <div className="bg-backcard">
                     <h6>Temp Min</h6>
                     <h3>{convertTemp(weather.main.temp_min,"C")+"˚C"}</h3>
                     <h6>Temp Max</h6>
                     <h3>{convertTemp(weather.main.temp_max,"C")+"˚C"}</h3>
                     </div>
+
                     
                     
 
