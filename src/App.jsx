@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import Card1 from "./components/card1/Card1Background";
+import Card1 from "./components/card1/Card1";
 import Card2 from "./components/card2/Card2Background";
 
 import { useState, useEffect } from 'react'
