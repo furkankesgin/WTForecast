@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
     &:nth-of-type(3){
         text-align: center;
         padding: 15px;
+        
     }
    
     }
@@ -51,21 +52,56 @@ const GlobalStyle = createGlobalStyle`
     padding: 30px;
 }
 
-.weeklyForecast{
-    display: inline-flexbox;
-   
-}
-
-.temp{
-    text-align: center;
-}
-
 .forecastImage{
+    
     border: 1px solid green;
     border-radius: 50%;
     margin:0.3rem;
     background-color: #007bff;
 }
+
+.flip-card {
+    display: inline-flexbox;
+  /* position: relative; */
+  width: 6rem; height: 9rem;
+  /* width: 6rem; height: auto; */
+  perspective: 30rem;
+  margin: .6rem;
+}
+.front, .back {
+  text-align: center;
+  margin-top: -.3rem;
+  position: absolute;
+  width: 110%; height: 110%;
+  transition: transform 1s;
+  backface-visibility:hidden;
+  background-color: #585858;
+  border-radius: .5rem;
+  padding: .5rem 0;
+
+}
+.back { 
+  transform: rotateY(180deg); 
+
+  h6{
+      font-size: x-small;
+      color: #58bbff;
+  }
+  h3{
+      margin-bottom: .3rem;
+
+  }
+
+  .bg-backcard{
+    &:nth-last-child(1){
+      background-color: #191d2b;
+      border-radius: 5px;
+    }
+  }
+}
+.flip-card:hover .front{ transform: rotateY(180deg); }
+.flip-card:hover .back { transform: rotateY(360deg); }
+
 
 `;
 export default GlobalStyle;
