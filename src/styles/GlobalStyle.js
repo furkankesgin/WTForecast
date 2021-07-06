@@ -71,10 +71,13 @@ const GlobalStyle = createGlobalStyle`
   /* width: 6rem; height: auto; */
   perspective: 30rem;
   margin: .6rem;
+  margin-bottom: 1.4rem;
+  
 }
 .front, .back {
   text-align: center;
   margin-top: -.8rem;
+  margin-left: -.3rem;
   position: absolute;
   width: 110%; height: 120%;
   transition: transform 1s;
