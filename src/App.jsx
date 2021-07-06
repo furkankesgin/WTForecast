@@ -15,6 +15,7 @@ function App() {
     // }
 
 	const [weather, setWeather] = useState({});
+	const [forecast, setForecast] = useState({});
 
 
 	useEffect(() => {
@@ -23,7 +24,13 @@ function App() {
 			const data = await res.json();
 			setWeather(data)
 		}
+		async function fetchForecast(city){
+			const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`);
+			const data = await res.json();
+			setForecast(data)
+		}
 		fetchWeather("istanbul")
+		fetchForecast("istanbul")
 	  }, [])
 
 
@@ -32,9 +39,13 @@ function App() {
 		<div className="container">
 			<Header />
 			<Card1 weather={weather}/>
-			<Card2 weather={weather}/>
+			<Card2 forecast={forecast}/>
 		</div>
 	);
+
+	
+
+	
 }
 
 export default App;

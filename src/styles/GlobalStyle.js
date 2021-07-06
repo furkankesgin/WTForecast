@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
     padding: 30px;
     border-radius: 15px;
     margin-top: 1rem;
+    &:nth-of-type(3){
+        text-align: center;
+        padding: 15px;
+    }
    
     }
     .container {
@@ -46,5 +50,22 @@ const GlobalStyle = createGlobalStyle`
     margin: 30px auto;
     padding: 30px;
 }
+
+.weeklyForecast{
+    display: inline-flexbox;
+   
+}
+
+.temp{
+    text-align: center;
+}
+
+.forecastImage{
+    border: 1px solid green;
+    border-radius: 50%;
+    margin:0.3rem;
+    background-color: #007bff;
+}
+
 `;
 export default GlobalStyle;
