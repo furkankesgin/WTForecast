@@ -10,3 +10,5 @@ function convertTemp(temp, tempUnit){
     temp = temp.toLocaleString('en-US', {maximumFractionDigits:1});
     return temp
 }
+
+export default convertTemp;
