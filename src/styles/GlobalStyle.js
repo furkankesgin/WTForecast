@@ -53,11 +53,11 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .forecastImage{
+    
     border-radius: 50%;
-    margin:0.3rem;
     background-color: #bababa;
-    width: 90%;
-    height: 60%;
+    width: 70%;
+    height: 50%;
     img{
         width: 100%;
         height: 100%;
@@ -76,21 +76,33 @@ const GlobalStyle = createGlobalStyle`
 }
 .front, .back {
   text-align: center;
-  margin-top: -.8rem;
-  margin-left: -.3rem;
   position: absolute;
-  width: 110%; height: 120%;
+  width: 100%; height: 100%;
   transition: transform 1s;
   backface-visibility:hidden;
   background-color: #585858;
   border-radius: .5rem;
-  padding: .5rem 0;
+  padding: .3rem 0;
+  
+
 }
 
 .front{
-    h6{
-        margin-top: .2rem;
-        font-size: .6rem;
+    .forecastImage{
+        margin: auto;
+    }
+    p{
+        font-size: .8rem;
+        margin-bottom: .5rem;
+        &:nth-child(1){
+            margin-bottom: -.1rem;
+        }
+        &:nth-child(2){
+            margin-bottom: .5rem;
+        }
+        &:nth-last-child(1){
+            margin-top: .7rem;
+        }
     }
 }
 .back { 
@@ -111,7 +123,7 @@ const GlobalStyle = createGlobalStyle`
       background-color: #191d2b;
       border-radius: 5px;
       /* margin-top: .2rem; */
-      padding: .2rem;
+      /* padding: .2rem; */
     }
   }
 }

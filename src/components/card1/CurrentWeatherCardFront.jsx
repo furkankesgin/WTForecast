@@ -91,7 +91,7 @@ const CurrentWeatherCardFrontStyle = styled.div`
 `;
 
 const MainWeatherStyle = styled.div`
-    font-size: 7em;
+    font-size: 1em;
     font-weight: bolder;
 `;
 

@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import GlobalStyle from "./styles/GlobalStyle";
-import Iphone5size from "./styles/phone-sizes/Iphone5size";
+import PhoneSizes from "./styles/phoneSizes";
 
 ReactDOM.render(
 	<React.StrictMode>
 		<GlobalStyle/>
-		<Iphone5size />
+		<PhoneSizes />
 		<App />
 	</React.StrictMode>,
 	document.getElementById('root')
