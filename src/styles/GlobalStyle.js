@@ -65,13 +65,12 @@ const GlobalStyle = createGlobalStyle`
 }
 
 .flip-card {
-    display: inline-flexbox;
+  display: inline-flexbox;
   /* position: relative; */
   width: 6rem; height: 9rem;
   /* width: 6rem; height: auto; */
   perspective: 30rem;
   margin: .6rem;
-  margin-bottom: 1.4rem;
   
 }
 .front, .back {
@@ -119,11 +118,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .bg-backcard{
+      p{
+          font-size: 1rem;
+          margin-top: auto;
+      }
     &:nth-last-child(1){
       background-color: #191d2b;
       border-radius: 5px;
-      /* margin-top: .2rem; */
-      /* padding: .2rem; */
+      margin-top: 1rem;
+      
     }
   }
 }
