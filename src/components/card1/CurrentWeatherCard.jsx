@@ -20,12 +20,12 @@ const CurrentWeatherCard = (props) => {
 
 
 const CurrentWeatherCardStyle = styled.div`
-    perspective: 30rem;
+    perspective: 60rem;
 `;
 
 const CurrentWeatherCardInnerStyle = styled.div`
     width: 100%; 
-    min-height: 20em;
+    min-height: 13em;
 `;
 
 
