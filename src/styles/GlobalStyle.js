@@ -54,37 +54,62 @@ const GlobalStyle = createGlobalStyle`
 
 .forecastImage{
     
-    border: 1px solid green;
     border-radius: 50%;
-    margin:0.3rem;
-    background-color: #007bff;
+    background-color: #bababa;
+    width: 70%;
+    height: 50%;
+    img{
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .flip-card {
-    display: inline-flexbox;
+  display: inline-flexbox;
   /* position: relative; */
   width: 6rem; height: 9rem;
   /* width: 6rem; height: auto; */
   perspective: 30rem;
   margin: .6rem;
+  
 }
 .front, .back {
   text-align: center;
-  margin-top: -.3rem;
   position: absolute;
-  width: 110%; height: 110%;
+  width: 100%; height: 100%;
   transition: transform 1s;
   backface-visibility:hidden;
   background-color: #585858;
   border-radius: .5rem;
-  padding: .5rem 0;
+  padding: .3rem 0;
+  
 
+}
+
+.front{
+    .forecastImage{
+        margin: auto;
+    }
+    p{
+        font-size: .8rem;
+        margin-bottom: .5rem;
+        &:nth-child(1){
+            margin-bottom: -.1rem;
+        }
+        &:nth-child(2){
+            margin-bottom: .5rem;
+        }
+        &:nth-last-child(1){
+            margin-top: .7rem;
+        }
+    }
 }
 .back { 
   transform: rotateY(180deg); 
+  
 
   h6{
-      font-size: x-small;
+      font-size: small;
       color: #58bbff;
   }
   h3{
@@ -93,9 +118,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .bg-backcard{
+      p{
+          font-size: 1rem;
+          margin-top: auto;
+      }
     &:nth-last-child(1){
       background-color: #191d2b;
       border-radius: 5px;
+      margin-top: 1rem;
+      
     }
   }
 }
