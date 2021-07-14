@@ -1,32 +1,20 @@
-import styled from 'styled-components';
 import CurrentWeatherCardFront from './CurrentWeatherCardFront';
 import CurrentWeatherCardBack from './CurrentWeatherCardBack';
+import ReactCardFlip from 'react-card-flip';
 
 const CurrentWeatherCard = (props) => {
     return (
-        <CurrentWeatherCardStyle>
-
-            <CurrentWeatherCardInnerStyle>
+        <>
+            {/* <ReactCardFlip isFlipped={props.settingsVisibility} flipDirection="horizontal"> */}
+            <ReactCardFlip isFlipped={props.settingsVisibility} flipDirection="vertical">
     
-                <CurrentWeatherCardFront  weather={props.weather} settingsVisibility={props.settingsVisibility} />
+                <CurrentWeatherCardFront className="front" weather={props.weather} settingsVisibility={props.settingsVisibility} />
 
-                <CurrentWeatherCardBack settingsVisibility={props.settingsVisibility} />
+                <CurrentWeatherCardBack className="back" settingsVisibility={props.settingsVisibility} />
 
-            </CurrentWeatherCardInnerStyle>
-
-        </CurrentWeatherCardStyle>
+            </ReactCardFlip>
+        </>
     )
 }
-
-
-const CurrentWeatherCardStyle = styled.div`
-    perspective: 60rem;
-`;
-
-const CurrentWeatherCardInnerStyle = styled.div`
-    width: 100%; 
-    min-height: 13em;
-`;
-
 
 export default CurrentWeatherCard;

@@ -2,45 +2,60 @@ import styled from 'styled-components';
 
 const CurrentWeatherCardBack = (props) => {
     return (
-        <CurrentWeatherCardBackStyle style={props.settingsVisibility ? {transform: `rotateY(360deg)`} : {transform: `rotateY(180deg)`}}>
+        // <CurrentWeatherCardBackStyle style={props.settingsVisibility ? {transform: `rotateY(360deg)`} : {transform: `rotateY(180deg)`}}>
+        <CurrentWeatherCardBackStyle>
+            <p>{props.width}</p>
+            
             <SettingsFormStyle>
                 <label>test</label>
                 <input type='text' placeholder='test' />
+                <br /><br />
+                <label>test</label>
+                <input type='text' placeholder='test' />
+                <br /><br />
+                <label>test</label>
+                <input type='text' placeholder='test' />    
             </SettingsFormStyle> 
         </CurrentWeatherCardBackStyle>
     )
 }
 
 const CurrentWeatherCardBackStyle = styled.div`
-    position: absolute;
+    /* position: absolute; */
     width: 90%; 
-    height: 100%;
     /* height: fit-content; */
+
     transition: transform 1s;
     backface-visibility:hidden;
     background-color: #17B978;
 
     border-radius: 15px;
+    /* padding: 0.7rem; */
+    padding: 1rem;
+
 `;
 
 
 const SettingsFormStyle = styled.div`
-position: absolute;
-top: 10%;
+/* position: absolute; */
+/* top: 10%;
 right: 5%;
 
-z-index: 1;
+z-index: 1; */
+
+
+
 
 label {
     
 }
 
 input {
-    float: right;
+    /* float: right; */
     width: 50%;
     height: 2em;
-    padding-left: 1em;
-    padding-right: 1em;
+    /* padding-left: 1em;
+    padding-right: 1em; */
     font-size: 15px;
     border-radius: 15px;
 }
