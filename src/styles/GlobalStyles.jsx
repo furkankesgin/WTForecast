@@ -41,10 +41,8 @@ const GlobalStyles = createGlobalStyle`
     &:nth-of-type(3){
         text-align: center;
         padding: 15px;
-        
     }
-   
-    }
+}
 
     .container {
 	max-width: 50%;
@@ -52,23 +50,9 @@ const GlobalStyles = createGlobalStyle`
     padding: 30px;
 }
 
-.forecastImage{
-    
-    border-radius: 50%;
-    background-color: #bababa;
-    width: 70%;
-    height: 50%;
-    img{
-        width: 100%;
-        height: 100%;
-    }
-}
-
 .flip-card {
   display: inline-flexbox;
-  /* position: relative; */
   width: 6rem; height: 9rem;
-  /* width: 6rem; height: auto; */
   perspective: 30rem;
   margin: .6rem;
   
@@ -83,12 +67,16 @@ const GlobalStyles = createGlobalStyle`
   border-radius: .5rem;
   padding: .3rem 0;
   
-
-}
-
-.front{
-    .forecastImage{
+  .forecastImage{
         margin: auto;
+        border-radius: 50%;
+        background-color: #bababa;
+        width: 70%;
+        height: 50%;
+        img{
+            width: 100%;
+            height: 100%;
+        }
     }
     p{
         font-size: .8rem;
@@ -104,28 +92,28 @@ const GlobalStyles = createGlobalStyle`
         }
     }
 }
+
 .back { 
   transform: rotateY(180deg); 
   
 
-  h6{
-      font-size: small;
-      color: #58bbff;
-  }
-  h3{
-      margin-bottom: .3rem;
+    h6{
+        font-size: small;
+        color: #58bbff;
+    }
+    h3{
+        margin-bottom: .3rem;
 
-  }
+    }
 
   .bg-backcard{
       p{
-          font-size: 1rem;
+          font-size: .88rem;
           margin-top: auto;
       }
     &:nth-last-child(1){
       background-color: #191d2b;
       border-radius: 5px;
-      margin-top: 1rem;
       
     }
   }

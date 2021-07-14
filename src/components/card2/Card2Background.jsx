@@ -1,53 +1,24 @@
 import {convertTemp} from "../../helpers/convertTemp"
 import { weekDay } from "../../helpers/weekDays";
+import {splitByHour} from "../../helpers/splitByHour";
+import Card2Front from "./Card2Front";
+import Card2Back from "./Card2Back";
+import Card2BackgroundStyles from "../../styles/card2/Card2BackgroundStyles";
 
 const Card2Background = (props) => {
-    var today = new Date(),
-    day = today.getDay();
     var my_key=1;
-
-    
     return (
-        <div className="card">
-                        {props.forecast.list ? props.forecast.list.map((weather)=> 
-            weather.dt_txt.split(" ")[1].split(":")[0] === "12" ? 
+        <Card2BackgroundStyles>
+            {props.forecast.list ? props.forecast.list.map((weather)=> 
+            splitByHour(weather,"12") ? 
             <div key={my_key+=1} className="flip-card">
-                <div className="front">
-                    <p>{weather.dt_txt.split(" ")[0].substring(5)}</p>
-                    <p>{(weekDay(new Date(weather.dt * 1000).getDay()))}</p>
-                        <div className='forecastImage'>
-                            <img src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt='vcv'></img>
-                        </div>
-                    <p>{convertTemp(weather.main.temp,"C")+"˚C"}</p>
-                </div>
-                <div className="back">
-                    <div className="bg-backcard">
-                    <h6>Temp</h6>
-                    <p>{convertTemp(weather.main.temp,"C")+"˚C"}</p>
-                    </div>
-
-
-                    <div className="bg-backcard">
-                    <h6>Feels</h6>
-                    <p>{convertTemp(weather.main.feels_like,"C")+"˚C"}</p>
-                    </div>
-
-
-                    <div className="bg-backcard">
-                    <h6>Temp Min</h6>
-                    <p>{convertTemp(weather.main.temp_min,"C")+"˚C"}</p>
-                    <h6>Temp Max</h6>
-                    <p>{convertTemp(weather.main.temp_max,"C")+"˚C"}</p>
-                    </div>
-
-                    
-                    
-
-                </div>
+                    <Card2Front allList={weather}/>
+                    <Card2Back allList={weather} />
             </div>
-            : console.log(" ")) :" "}
-
-        </div>
+                :console.log("aaa"+weather.dt_txt.split(" ")[1].split(":")[0]))
+            :console.log("adana")}
+        </Card2BackgroundStyles>
+            
        
     )
 }
