@@ -301,7 +301,6 @@ padding: 0.7rem;
     
 `;
 
-<<<<<<< HEAD
 
 
 
@@ -351,11 +350,6 @@ const CurrentWeatherCardFrontInnerStyle2 = styled.div`
 
 
     
-=======
-const MainWeatherStyle = styled.div`
-    font-size: 1em;
-    font-weight: bolder;
->>>>>>> 91f94c2f2ca937e71886419c37741914c5433258
 `;
 
 
