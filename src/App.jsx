@@ -1,6 +1,8 @@
 import Header from "./components/Header";
 import Card1 from "./components/card1/Card1";
 import Card2 from "./components/card2/Card2Background";
+import GlobalStyles from "./styles/GlobalStyles";
+import PhoneSizes from "./styles/phoneSizes";
 
 import { useState, useEffect } from 'react'
 
@@ -37,6 +39,8 @@ function App() {
 
 	return (
 		<div className="container">
+			<GlobalStyles/>
+			<PhoneSizes />
 			<Header />
 			<Card1 weather={weather}/>
 			<Card2 forecast={forecast}/>
