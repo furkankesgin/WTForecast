@@ -1,95 +1,64 @@
 import convertTemp from "../../helpers/convertTemp";
-import prettifyDate from "../../helpers/prettifyDate";
 
-import { CurrentWeatherCardFrontStyle, CurrentWeatherCardFrontTableStyle } from "../../styles/card1/CurrentWeatherCardFrontStyles.jsx"
+import {Card, Row, Col} from 'react-bootstrap'
 
 const CurrentWeatherCardFront = (props) => {
 
     const iconBaseUrl = "http://openweathermap.org/img/wn/";
 
     return (
-        <CurrentWeatherCardFrontStyle>
-            <CurrentWeatherCardFrontTableStyle>
+        <Card className="card-color2 p-3">
 
-                <li> 
-                    <div className="first-div">
+            <Row>
 
-                        {/* <h4>{props.weather.name ? props.weather.name : "-"} {props.weather.sys ? props.weather.sys.country : "-"}</h4>
-                        <h6>lon: {props.weather.coord ? props.weather.coord.lon : "-"} - lat: {props.weather.coord ? props.weather.coord.lat : "-"}</h6>coords */}
- 
-                    <div className="top-div">
-                        <div>
-                            <h6>Pressure</h6><h4>{props.weather.weather ? props.weather.main.pressure : "-"} hPa</h4>
+                <Col className="col-xxl-10 col-xl-10 col-lg-9 col-md-9 col-sm-8 col-xs-8">
+                    <Row>
+                        <Col className="col-md-auto">
+                            <p className="text-secondary h6 mb-0 text-center">Pressure</p><p className="text-center"><small>{props.weather.weather ? props.weather.main.pressure : "-"}hPa</small></p>
+                        </Col>
+                        <Col className="col-md-auto">
+                            <p className="text-secondary h6 mb-0 text-center">Humidity</p><p className="text-center"><small>{props.weather.weather ? props.weather.main.humidity : "-"}%</small></p>
+                        </Col>
+                        <Col className="col-md-auto">
+                            <p className="text-secondary h6 mb-0 text-center">Wind</p><p className="text-center"><small>{props.weather.wind ? props.weather.wind.speed : "-"}m/s</small></p>
+                        </Col>{/* Metric: meter/sec, Imperial: miles/hour */}                        
+                        <Col className="col-md-auto">
+                            <p className="text-secondary h6 mb-0 text-center">Cloudiness</p><p className="text-center"><small>{props.weather.clouds ? props.weather.clouds.all : "-"}%</small></p>
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col className="col-md-auto">
+                            <div className="text-center">
+                                <Row>
+                                    <h1 className="display-1">{props.weather.main ? convertTemp(props.weather.main.temp, "C") + "˚C" : "-"}</h1>
+                                </Row>
+                                <Row className="g-md-1">
+                                    <Col>
+                                        <h6 className="text-secondary">{props.weather.weather ? `${convertTemp(props.weather.main.temp_min, "C", 0) + "˚C"} - ${convertTemp(props.weather.main.temp_max, "C", 0) + "˚C"}` : "-"}</h6>
+                                    </Col>
+                                    <Col>
+                                        <h6 className="text-secondary">feels:{props.weather.main ? convertTemp(props.weather.main.feels_like, "C") + "˚C" : "-"}</h6>  
+                                    </Col>
+                                </Row>
+                            </div>
+                        </Col>
+                    </Row>
+                </Col>
+
+                <Col className="col-xxl-2 col-xl-2 col-lg-3 col-md-3 col-sm-4 col-xs-4 align-self-center">
+                    <Card className="card-color2">
+                        <img className="align-self-center" src={props.weather.weather ? iconBaseUrl + props.weather.weather[0].icon + "@2x.png" : "https://github.com/github.png"} alt="weather icon" width="100" height="100"></img>
+                        <div class="card-body">
+                            <p className="h5 text-center">{props.weather.weather ? props.weather.weather[0].description : "-"}</p> 
+                            {/* <h6 className="text-center">thunderstorm with heavy drizzle</h6> */}
                         </div>
-                         <hr/>
-                        <div>
-                            <h6>Humidity</h6><h4>{props.weather.weather ? props.weather.main.humidity : "-"} %</h4>                            
-                        </div>
-                        <hr/>
-                        <div>
-                            <h6>Cloudiness</h6><h4>{props.weather.clouds ? props.weather.clouds.all : "-"} %</h4>
-                        </div>
-                        <hr/>
-                        <div>
-                            <h6>Wind</h6><h4>{props.weather.wind ? props.weather.wind.speed : "-"}</h4>
-                        </div>
-                    </div>
- 
-                        <h1>{props.weather.main ? convertTemp(props.weather.main.temp, "C") + "˚C" : "-"}</h1>
-                        <h5>{props.weather.weather ? 
-                            `${convertTemp(props.weather.main.temp_min, "C", 0) + "˚C"} - ${convertTemp(props.weather.main.temp_max, "C", 0) + "˚C"}` 
-                        : "-"} | feels: {props.weather.main ? convertTemp(props.weather.main.feels_like, "C") + "˚C" : "-"}</h5>
+                    </Card>
+                </Col>
 
+            </Row>
 
-                    </div>
-                </li>
-
-                <li>
-                   <div className="second-div">
-                        <div className="image-card">
-                            <img src={props.weather.weather ? iconBaseUrl + props.weather.weather[0].icon + "@2x.png" : "https://github.com/github.png"} alt="weather icon" width="100" height="100"></img>
-                        </div>
-                        
-                        {/* <h4>{props.weather.weather ? props.weather.weather[0].description : "-"}</h4>  */}
-                        <h4>thunderstorm with heavy drizzle</h4>
-                    </div>
-                </li>    
-
-
-            </CurrentWeatherCardFrontTableStyle> 
-
-            {/* <CurrentWeatherCardFrontTableStyle>
-                <li>
-                    <div className="bottom-card">
-                        <h5>Sun</h5>
-                        <div>
-                            <h6>Sunrise:&nbsp;</h6><h4>{props.weather.sys ? prettifyDate(props.weather.sys.sunrise).split(",")[1] : "-"}</h4>
-                        </div>
-                        <div>
-                            <h6>Sunset:&nbsp;</h6><h4>{props.weather.sys ? prettifyDate(props.weather.sys.sunset).split(",")[1] : "-"}</h4>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div className="bottom-card">
-                        <h5>Wind</h5>
-                        <div>
-                            <h6>Speed:&nbsp;</h6><h4>{props.weather.wind ? props.weather.wind.speed : "-"}</h4>
-                        </div>
-                        <div>
-                            <h6>Deg:&nbsp;</h6> <h4>{props.weather.wind ? props.weather.wind.deg : "-"}</h4>
-                        </div>
-                    </div>
-                </li>
-            </CurrentWeatherCardFrontTableStyle> */}
-
-
-            {/*şuna mesaj ekle
-            "cod":200 
-            */}
-
-        </CurrentWeatherCardFrontStyle>
-
+        </Card>
     )
 }
 
