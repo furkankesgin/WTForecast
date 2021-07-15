@@ -5,6 +5,11 @@ import GlobalStyles from "./styles/GlobalStyles";
 import PhoneSizes from "./styles/PhoneSizes";
 import { useState, useEffect } from 'react'
 
+// bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Container} from 'react-bootstrap'
+
+
 function App() {
 
 	const [weather, setWeather] = useState({});
@@ -29,13 +34,13 @@ function App() {
 
 
 	return (
-		<div className="container">
+		<Container>
 			<GlobalStyles/>
-			<PhoneSizes />
+			{/* <PhoneSizes /> */}
 			<Header />
 			<Card1 weather={weather}/>
 			<Card2 forecast={forecast}/>
-		</div>
+		</Container>
 	);
 
 	
