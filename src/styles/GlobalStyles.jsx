@@ -16,6 +16,20 @@ const GlobalStyles = createGlobalStyle`
         --sidebar-dark-color:#191d2b;
         --scrollbar-bg-color: #6b6b6b;
         --scrollbar-track-color: #383838; 
+
+        --card-color1: #086972;
+        --card-color2: #17B978;
+        --card-color3: #A7FF83;
+        /* --cardColor4: #086972; */
+
+        --text-primary: #3c3c3c;
+        --text-secondary: #e2e2e2;
+
+        --button-color1: #3c3c3c;
+        --button-color2: #17B978;
+
+
+
     }
 
     *{
@@ -29,11 +43,40 @@ const GlobalStyles = createGlobalStyle`
 
     body{
         font-family: Arial, Helvetica, sans-serif;
-        background-color: #071A52;
+        background-color: #071A52 !important;
         color: #ffff;
+        color: var(--text-primary) !important;
     }
 
+
+
+
     .card{
+        border-radius: 15px !important;
+    }
+
+    .card-color1{
+        background-color: var(--card-color1);
+    }
+
+    .card-color2{
+        background-color: var(--card-color2);
+    }
+
+
+    .text-primary{
+        color: var(--text-primary);
+    }
+
+    .text-secondary{
+        color: var(--text-secondary) !important;
+    }
+
+
+
+
+
+    .carda{
     border: 2px solid var(--border-color);
     padding: 30px;
     border-radius: 15px;
@@ -44,11 +87,11 @@ const GlobalStyles = createGlobalStyle`
     }
 }
 
-    .container {
+    /* .container {
 	max-width: 50%;
     margin: 30px auto;
     padding: 30px;
-}
+} */
 
 .flip-card {
   display: inline-flexbox;
