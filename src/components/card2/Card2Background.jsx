@@ -3,23 +3,28 @@ import { weekDay } from "../../helpers/weekDays";
 import {splitByHour} from "../../helpers/splitByHour";
 import Card2Front from "./Card2Front";
 import Card2Back from "./Card2Back";
-import Card2BackgroundStyles from "../../styles/card2/Card2BackgroundStyles";
+import {Card, Row, Col} from 'react-bootstrap';
+import {Card2Styles} from "../../styles/card2/Card2Styles" 
 
 const Card2Background = (props) => {
-    var my_key=1;
     return (
-        <Card2BackgroundStyles>
-            {props.forecast.list ? props.forecast.list.map((weather)=> 
-            splitByHour(weather,"12") ? 
-            <div key={my_key+=1} className="flip-card">
-                    <Card2Front allList={weather}/>
-                    <Card2Back allList={weather} />
-            </div>
-                :console.log("aaa"+weather.dt_txt.split(" ")[1].split(":")[0]))
-            :console.log("adana")}
-        </Card2BackgroundStyles>
-            
-       
+        <Card2Styles className="card-color1 mt-3">
+            <Row className="g-md-3 p-3 g-ml-3 justify-content-center">
+                    {props.forecast.list ? props.forecast.list.map((weather)=> 
+                    splitByHour(weather,"12") ? 
+                        <Col className="p-2 col-auto col-sm-4 col-md-4 col-lg-2 col-xl-2 col-xxl-2" style={{flex:1}}>
+                            <div className="flipcard">
+                                <div className="flipcard-wrap">
+                                    <Card2Front allList={weather}/>
+                                    <Card2Back allList={weather} />
+                                </div>        
+                            </div>                       
+                        </Col>
+                        :console.log("aaa"+weather.dt_txt.split(" ")[1].split(":")[0]))
+                    :console.log("adana")}
+            </Row>
+        </Card2Styles>
+
     )
 }
 
