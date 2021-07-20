@@ -1,5 +1,4 @@
-import {convertTemp} from "../../helpers/convertTemp"
-import { weekDay } from "../../helpers/weekDays";
+import {convertTemp} from "../../helpers/convertUnits"
 import {splitByHour} from "../../helpers/splitByHour";
 import Card2Front from "./Card2Front";
 import Card2Back from "./Card2Back";
@@ -20,8 +19,8 @@ const Card2Background = (props) => {
                                 </div>        
                             </div>                       
                         </Col>
-                        :console.log("aaa"+weather.dt_txt.split(" ")[1].split(":")[0]))
-                    :console.log("adana")}
+                        :"")
+                    :""}
             </Row>
         </Card2Styles>
 

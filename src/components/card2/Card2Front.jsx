@@ -1,5 +1,5 @@
-import {convertTemp} from "../../helpers/convertTemp"
-import { weekDay } from "../../helpers/weekDays";
+import {convertTemp} from "../../helpers/convertUnits"
+import { weekDay } from "../../helpers/dateTime";
 import {Card, Col} from 'react-bootstrap'
 import styled from "styled-components"
 import {CardFront} from "../../styles/card2/Card2Styles" 
@@ -12,7 +12,7 @@ const Card2Front = (props) => {
                     <div>
                         <img src={`https://openweathermap.org/img/wn/${props.allList.weather[0].icon}@2x.png`} alt='vcv'></img>
                     </div>
-                <p className="h4 mb-0 mt-0 pb-md-2">{convertTemp(props.allList.main.temp,"C")+"˚C"}</p>
+                <p className="h4 mb-0 mt-0 pb-md-2">{convertTemp({temp:props.allList.main.temp, unit:"metric"})+"˚C"}</p>
                 </CardFront>                  
        
        
