@@ -4,16 +4,28 @@ import ReactCardFlip from 'react-card-flip';
 
 const CurrentWeatherCard = (props) => {
     return (
-        <>
-            {/* <ReactCardFlip isFlipped={props.settingsVisibility} flipDirection="horizontal"> */}
-            <ReactCardFlip isFlipped={props.settingsVisibility} flipDirection="vertical">
-    
-                <CurrentWeatherCardFront className="front" weather={props.weather} settingsVisibility={props.settingsVisibility} />
+        <ReactCardFlip isFlipped={props.isFront} flipDirection="vertical">
 
-                <CurrentWeatherCardBack className="back" settingsVisibility={props.settingsVisibility} />
+            <CurrentWeatherCardFront keys="front" 
+            weather={props.weather} 
 
-            </ReactCardFlip>
-        </>
+            unit={props.unit} 
+
+            customUIElements={props.customUIElements}
+            />
+
+            <CurrentWeatherCardBack keys="back" 
+            isCityValid={props.isCityValid} 
+            setCitySearch={props.setCitySearch} 
+
+            unit={props.unit} 
+            setUnit={props.setUnit} 
+            
+            customUIElements={props.customUIElements} 
+            setCustomUIElements={props.setCustomUIElements}
+            />
+
+        </ReactCardFlip>
     )
 }
 
