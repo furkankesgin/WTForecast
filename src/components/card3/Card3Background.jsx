@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Graph from './Graph';
+import {Card} from 'react-bootstrap'
 
 const Card3Background = (props) => {
+
+
     return (
-        <div>
-            <p>aaa</p>
-        </div>
-    )
+      <Card className="card-color1 mt-3">
+     <Graph/>
+     </Card>
+    );
 }
 
-export default Card3Background
+export default Card3Background;

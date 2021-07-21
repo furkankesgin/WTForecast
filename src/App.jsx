@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Card1 from "./components/card1/Card1";
 import Card2 from "./components/card2/Card2Background";
+import Card3 from "./components/card3/Card3Background";
 import GlobalStyles from "./styles/GlobalStyles";
 import { useState, useEffect } from 'react'
 
@@ -38,6 +39,7 @@ function App() {
 			<Header />
 			<Card1 weather={weather}/>
 			<Card2 forecast={forecast}/>
+			<Card3 />
 		</Container>
 	);
 
