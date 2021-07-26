@@ -10,7 +10,7 @@ const useEffectAfterMount = (func, deps) => {
         else{
             didMount.current = true;
         }
-    }, deps);
+    }, [deps]);
 }
 
 export default useEffectAfterMount;

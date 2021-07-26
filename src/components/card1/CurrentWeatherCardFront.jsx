@@ -1,11 +1,13 @@
-import { convertTemp, convertSpeed } from "../../helpers/convertUnits";
-
 // bootstrap
 import { Card, Row, Col } from 'react-bootstrap'
 
 // statics
 import UNITS from "../../statics/UNITS";
 import { iconBaseURL, placeHolderImageURL } from "../../statics/URLS";
+
+// helpers
+import { convertTemp, convertSpeed } from "../../helpers/convertUnits";
+
 
 const CurrentWeatherCardFront = (props) => {
     return (

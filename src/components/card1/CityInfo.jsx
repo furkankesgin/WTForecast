@@ -1,10 +1,17 @@
-import { prettifyDate } from "../../helpers/dateTime";
+// bootstrap
 import { Row, Col } from 'react-bootstrap'
+
+// helpers
+import { prettifyDate } from "../../helpers/dateTime";
+
 
 const CityInfo = (props) => {
     return (
         <>
+            {/* city - country */}
             <p className="display-6 mb-0">{props.weather.name ? props.weather.name : "-"} {props.weather.sys ? props.weather.sys.country : "-"}</p>
+
+            {/* city lon-lat */}
             <Row className="row-cols-auto">
                 {
                     props.customUIElements.lonlat ?
@@ -19,7 +26,8 @@ const CityInfo = (props) => {
                     : ""
                 }
             </Row>
-
+            
+            {/* sunrise - sunset */}
             <Row className="row-cols-auto">
                 {
                     props.customUIElements.sun ?
