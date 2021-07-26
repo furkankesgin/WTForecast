@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {Card, Row, Col} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 
 const Card2Styles = styled(Card)`
 

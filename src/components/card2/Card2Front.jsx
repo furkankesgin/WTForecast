@@ -1,7 +1,5 @@
 import {convertTemp} from "../../helpers/convertUnits"
 import { weekDay } from "../../helpers/dateTime";
-import {Card, Col} from 'react-bootstrap'
-import styled from "styled-components"
 import {CardFront} from "../../styles/card2/Card2Styles" 
 const Card2Front = (props) => {
     return (

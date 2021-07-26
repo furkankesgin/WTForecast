@@ -72,7 +72,8 @@ const GlobalStyles = createGlobalStyle`
         color: var(--text-secondary) !important;
     }
 
-
+    .muz{
+    transform: rotate='90deg'}
 
 `;
 
