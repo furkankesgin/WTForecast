@@ -1,6 +1,5 @@
 import {convertTemp} from "../../helpers/convertUnits"
-import {Card, Col, Row} from 'react-bootstrap'
-import styled from "styled-components"
+import {Row} from 'react-bootstrap'
 import {CardBack} from "../../styles/card2/Card2Styles" 
 
 const Card2Back = (props) => {

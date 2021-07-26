@@ -1,8 +1,7 @@
-import {convertTemp} from "../../helpers/convertUnits"
 import {splitByHour} from "../../helpers/splitByHour";
 import Card2Front from "./Card2Front";
 import Card2Back from "./Card2Back";
-import {Card, Row, Col} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import {Card2Styles} from "../../styles/card2/Card2Styles" 
 
 const Card2Background = (props) => {

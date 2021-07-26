@@ -6,7 +6,7 @@ const Card3Background = (props) => {
 
 
     return (
-      <Card className="card-color1 mt-3">
+      <Card className="card-color2 mt-3">
      <Graph/>
      </Card>
     );
