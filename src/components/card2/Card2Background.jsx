@@ -13,8 +13,8 @@ const Card2Background = (props) => {
                         <Col className="p-2 col-auto col-sm-4 col-md-4 col-lg-2 col-xl-2 col-xxl-2" style={{flex:1}}>
                             <div className="flipcard">
                                 <div className="flipcard-wrap">
-                                    <Card2Front allList={weather}/>
-                                    <Card2Back allList={weather} />
+                                    <Card2Front allList={weather} unit={props.unit}/>
+                                    <Card2Back allList={weather} unit={props.unit}/>
                                 </div>        
                             </div>                       
                         </Col>
