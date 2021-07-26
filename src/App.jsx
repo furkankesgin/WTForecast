@@ -1,65 +1,66 @@
-import Header from "./components/Header";
-import Card1 from "./components/card1/Card1";
-import Card2 from "./components/card2/Card2Background";
-import Card3 from "./components/card3/Card3Background";
-import GlobalStyles from "./styles/GlobalStyles";
+// react
 import { useState, useEffect } from 'react'
 
 // bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap'
 
-// API base urls
+// styled components
+import GlobalStyles from "./styles/GlobalStyles";
+
+// inner components
+import Header from "./components/Header";
+import Card1 from "./components/card1/Card1";
+import Card2 from "./components/card2/Card2Background";
+import Card3 from "./components/card3/Card3Background";
+
+// statics
 import { weatherAPICallBaseURL, forecastAPICallBaseURL } from "./statics/URLS";
 
-// for settings part
-import { useDebounce } from '@react-hook/debounce'
-import useEffectAfterMount from './helpers/useEffectAfterMount'
+// helpers
+// import useEffectAfterMount from './helpers/useEffectAfterMount'
 import Storage from './helpers/Storage'
+
+// debounce hook
+import { useDebounce } from '@react-hook/debounce'
 
 
 function App() {
 
-	const storage = new Storage("WTForecast");
+	// storage object // TODO find better way for defaults
+	const storage = new Storage("WTForecast", {"customUIElements":{"pressure":true,"humidity":true,"wind":true,"cloudiness":true,"minmax":true,"feels":true,"lonlat":true,"sun":true},"unit":"metric","city":"istanbul"});
 
-
+	// weather states
 	const [weather, setWeather] = useState({});
 	const [forecast, setForecast] = useState({});
-
-
 
 	// settings menu states
 	const [citySearch, setCitySearch] = useDebounce("", 1000);
 	const [isCityValid, setIsCityValid] = useState("");
-	const [city, setCity] = useState("");
+	const [city, setCity] = useState(storage.getItemFromStorageWithDefaultFallback("city"));
 
+	const [unit, setUnit] = useState(storage.getItemFromStorageWithDefaultFallback("unit"));
+	const [customUIElements, setCustomUIElements] = useState(storage.getItemFromStorageWithDefaultFallback("customUIElements"));
 
-	const [unit, setUnit] = useState("");
-	const [customUIElements, setCustomUIElements] = useState({});
-
-
-	
-
-	useEffectAfterMount(() => {
+	useEffect(() => {
 		storage.setToStorage({customUIElements: customUIElements});
 	}, [customUIElements])
 
 
-	useEffectAfterMount(() => {
+	useEffect(() => {
 		storage.setToStorage({unit: unit});
 	}, [unit])
 
 
-	useEffectAfterMount(() => {
+	useEffect(() => {
 		storage.setToStorage({city: city});
 	}, [city])
-
 
 
 	// on citySearch
 	useEffect(() => {
 		async function testCity(){
-			// test additional stuff
+			// TODO maybe test additional stuff
 
 			if(citySearch){
 				try{
@@ -70,110 +71,78 @@ function App() {
 					const forecast = await res2.json();
 
 					if(weather.cod === 200){
+						// if city is valid
+
+						// display message
 						setIsCityValid("is-valid");
+
+						// weather and forecast states
 						setWeather(weather);
 						setForecast(forecast);
-
+						
+						// change city to the searched city (changing state of the city automatically saves it to storage)
 						setCity(citySearch);
-						// storage.setToStorage({city: city});
 					}
 					else{
+						// if city is not valid display city invalid message
 						setIsCityValid("is-invalid");
 					}
 				}
 				catch{
+					// if something is broken display city invalid message
 					setIsCityValid("is-invalid");
 				}
 			}
 			else{
-				// if city textbox is empty don't show any message
+				// if city textbox is empty don't display any message
 				setIsCityValid("");
 			}
 
-
 		}
+
 		testCity();
 	},[citySearch]);
 
 
 
-
-
+	// on load (fetch weather and forecast data for saved city from api)
 	useEffect(() => {
-		async function fetchWeather(city){
+		async function fetchWeather(){
 			const res = await fetch(`${weatherAPICallBaseURL}?q=${city}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`);
-			const data = await res.json();
-			setWeather(data)
+			const weather = await res.json();
+			setWeather(weather)
 		}
-		async function fetchForecast(city){
+		async function fetchForecast(){
 			const res = await fetch(`${forecastAPICallBaseURL}?q=${city}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`);
-			const data = await res.json();
-			setForecast(data)
+			const forecast = await res.json();
+			setForecast(forecast)
 		}
 
-		if(storage.isTherePreviousSave()){
-			// TODO add exception handling
-			const items = storage.getFromStorage();
-			// console.log(items)
-
-			// fetch the last saved city
-			setCity(items.city);
-			fetchWeather(items.city);
-			fetchForecast(items.city);
-			
-			// set the unit from the storage
-			setUnit(items.unit);
-
-			//set custom ui elements
-			setCustomUIElements(items.customUIElements);
-		}
-		else{
-			// TODO find better way for defaults
-			// defaults
-			setCity("istanbul");
-			fetchWeather("istanbul");
-			fetchForecast("istanbul");
-
-			setUnit("metric");
-
-			setCustomUIElements({
-					"pressure":true,
-					"humidity":true,
-					"wind":true,
-					"cloudiness":true,
-					
-					"minmax":true,
-					"feels":true,
-
-					"lonlat":true,
-					"sun":true
-				});
-		}
-
+		fetchWeather();
+		fetchForecast();
 	}, [])
 
-	
+
 
 	return (
 		<Container>
-			<GlobalStyles/>
+			<GlobalStyles />
 			<Header />
 
 			<Card1 
-			weather={weather} 
+				weather={weather} 
 
-			isCityValid={isCityValid} 
-			setCitySearch={setCitySearch} 
+				isCityValid={isCityValid} 
+				setCitySearch={setCitySearch} 
 
-			unit={unit} 
-			setUnit={setUnit} 
+				unit={unit} 
+				setUnit={setUnit} 
 
-			customUIElements={customUIElements} 
-			setCustomUIElements={setCustomUIElements}
+				customUIElements={customUIElements} 
+				setCustomUIElements={setCustomUIElements}
 			/>
-			
-			
-			<Card2 forecast={forecast}/>
+
+			<Card2 forecast={forecast} />
 			<Card3 />
 		</Container>
 	);
