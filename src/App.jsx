@@ -142,8 +142,8 @@ function App() {
 				setCustomUIElements={setCustomUIElements}
 			/>
 
-			<Card2 forecast={forecast} />
-			<Card3 />
+			<Card2 forecast={forecast} unit={unit} />
+			<Card3 unit={unit} />
 		</Container>
 	);
 
