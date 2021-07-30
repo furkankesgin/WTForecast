@@ -22,5 +22,5 @@ const SettingsButton = styled.button`
     }
 `;
 
-export {SettingsButton}
+export { SettingsButton }
 
