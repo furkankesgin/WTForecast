@@ -8,8 +8,11 @@ import { Container } from 'react-bootstrap'
 // styled components
 import GlobalStyles from "./styles/GlobalStyles";
 
+// custom font (handlee)
+import "@fontsource/handlee";
+
 // inner components
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import Card1 from "./components/card1/Card1";
 import Card2 from "./components/card2/Card2Background";
 import Card3 from "./components/card3/Card3Background";
@@ -60,8 +63,6 @@ function App() {
 	// on citySearch
 	useEffect(() => {
 		async function testCity(){
-			// TODO maybe test additional stuff
-
 			if(citySearch){
 				try{
 					const res = await fetch(`${weatherAPICallBaseURL}?q=${citySearch}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`);
