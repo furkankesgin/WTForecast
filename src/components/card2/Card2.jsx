@@ -4,7 +4,7 @@ import Card2Back from "./Card2Back";
 import {Row, Col} from 'react-bootstrap';
 import {Card2Styles} from "../../styles/card2/Card2Styles" 
 
-const Card2Background = (props) => {
+const Card2 = (props) => {
     return (
         <Card2Styles className="card-color1 mt-3">
             <Row className="g-md-3 p-3 g-ml-3 justify-content-center">
@@ -27,4 +27,4 @@ const Card2Background = (props) => {
 }
 
 
-export default Card2Background;
+export default Card2;

@@ -11,8 +11,8 @@ import GlobalStyles from "./styles/GlobalStyles";
 // inner components
 import Header from "./components/Header";
 import Card1 from "./components/card1/Card1";
-import Card2 from "./components/card2/Card2Background";
-import Card3 from "./components/card3/Card3Background";
+import Card2 from "./components/card2/Card2";
+import Card3 from "./components/card3/Card3";
 
 // statics
 import { weatherAPICallBaseURL, forecastAPICallBaseURL } from "./statics/URLS";
@@ -143,7 +143,7 @@ function App() {
 			/>
 
 			<Card2 forecast={forecast} unit={unit} />
-			<Card3 unit={unit} />
+			<Card3 forecast={forecast} unit={unit} />
 		</Container>
 	);
 
