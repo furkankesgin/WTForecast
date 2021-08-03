@@ -1,30 +1,23 @@
 import {splitByHour} from "../../helpers/splitByHour";
-import Card2Front from "./Card2Front";
-import Card2Back from "./Card2Back";
-import {Row, Col} from 'react-bootstrap';
+import {Row} from 'react-bootstrap';
 import {Card2Styles} from "../../styles/card2/Card2Styles" 
+import FlipCard from "./FlipCard";
 
 const Card2 = (props) => {
+    let dummyWeather=[0,1,2,3,4];
     return (
         <Card2Styles className="card-color1 mt-3">
-            <Row className="g-md-3 p-3 g-ml-3 justify-content-center">
-                    {props.forecast.list ? props.forecast.list.map((weather)=> 
-                    splitByHour(weather,"12") ? 
-                        <Col className="p-2 col-auto col-sm-4 col-md-4 col-lg-2 col-xl-2 col-xxl-2" style={{flex:1}}>
-                            <div className="flipcard">
-                                <div className="flipcard-wrap">
-                                    <Card2Front allList={weather} unit={props.unit}/>
-                                    <Card2Back allList={weather} unit={props.unit}/>
-                                </div>        
-                            </div>                       
-                        </Col>
-                        :"")
-                    :""}
+            <Row  className="g-md-3 p-3 g-ml-3 justify-content-center">
+            {props.forecast.list ? props.forecast.list.map((weather)=> 
+                //get data by time 12:00:00, 
+                splitByHour(weather,"12") ? 
+                <FlipCard weather={weather} unit={props.unit}/>:"")
+                    //create dummyWeather create empty cards
+                 :dummyWeather.map((weather)=> 
+                 <FlipCard weather={weather} unit={props.unit}/>
+             )}
             </Row>
         </Card2Styles>
-
     )
 }
-
-
 export default Card2;
