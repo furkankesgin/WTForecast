@@ -11,7 +11,7 @@ const CityInfo = (props) => {
             {/* city - country */}
             <p className="display-6 mb-0">{props.weather.name ? props.weather.name : "-"} {props.weather.sys ? props.weather.sys.country : "-"}</p>
 
-            {/* cicty lon-lat */}
+            {/* city lon-lat */}
             <Row className="row-cols-auto">
                 {
                     props.customUIElements.lonlat ?
