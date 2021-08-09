@@ -13,6 +13,11 @@ const CurrentWeatherCardBack = (props) => {
         props.setUnit(unit);
     }
 
+    const changeTheme = (theme) => {
+        // checkbox id's used as unit
+        props.setTheme(theme);
+    }
+
     return (
         <Card className="color-secondary p-3">
             <Row>
@@ -42,8 +47,8 @@ const CurrentWeatherCardBack = (props) => {
                             checked={props.unit === "metric" ? "checked" : ""}
                             onChange={(e) => changeUnit(e.target.id)} />
 
-                        <label className="form-check-label" for="metricRadio">
-                            Metric (˚C)
+                        <label className="form-check-label" for="metric">
+                            Metric
                         </label>
                     </div>
 
@@ -52,32 +57,32 @@ const CurrentWeatherCardBack = (props) => {
                             checked={props.unit === "imperial" ? "checked" : ""}
                             onChange={(e) => changeUnit(e.target.id)} />
 
-                        <label className="form-check-label" for="imperialRadio">
-                            Imperial (˚F)
+                        <label className="form-check-label" for="imperial">
+                            Imperial
                         </label>
                     </div>
                 </Col>
 
-                {/* theme selection TODO*/}
+                {/* theme selection */}
                 <Col className="col-xxl-3 col-xl-3 col-lg-6 col-md-6 col-sm-0 col-0">
                     <p className="h4">Choose Theme</p>
                     <div className="form-check">
-                        <input className="form-check-input" type="radio" id="themeRadio1" name="themeRadio" checked
-                            // checked={props.unit === "metric" ? "checked" : ""}
-                            onChange={(e) => console.log("theme 1 button")} />
+                        <input className="form-check-input" type="radio" id="light" name="themeRadio"
+                            checked={props.theme === "light" ? "checked" : ""}
+                            onChange={(e) => changeTheme(e.target.id)} />
 
-                        <label className="form-check-label" for="themeRadio1">
-                            theme 1
+                        <label className="form-check-label" for="light">
+                            Light
                         </label>
                     </div>
 
                     <div className="form-check">
-                        <input className="form-check-input" type="radio" id="themeRadio2" name="themeRadio"
-                            // checked={props.unit === "imperial" ? "checked" : ""}
-                            onChange={(e) => console.log("theme 2 button")} />
+                        <input className="form-check-input" type="radio" id="dark" name="themeRadio"
+                            checked={props.theme === "dark" ? "checked" : ""}
+                            onChange={(e) => changeTheme(e.target.id)} />
 
-                        <label className="form-check-label" for="themeRadio2">
-                            theme 2
+                        <label className="form-check-label" for="dark">
+                            Dark
                         </label>
                     </div>
                 </Col>
@@ -95,7 +100,7 @@ const CurrentWeatherCardBack = (props) => {
                                 <input class="form-check-input" type="checkbox" id="pressure"
                                     onChange={(e) => toggleCustomUI(e.target.id)}
                                     checked={props.customUIElements.pressure ? "checked" : ""} />
-                                <label class="form-check-label" for="pressureCheckBox">Pressure</label>
+                                <label class="form-check-label" for="pressure">Pressure</label>
                             </div>
                         </Col>
                     </Row>
@@ -105,7 +110,7 @@ const CurrentWeatherCardBack = (props) => {
                                 <input class="form-check-input" type="checkbox" id="humidity"
                                     onChange={(e) => toggleCustomUI(e.target.id)}
                                     checked={props.customUIElements.humidity ? "checked" : ""} />
-                                <label class="form-check-label" for="humidityCheckBox">Humidity</label>
+                                <label class="form-check-label" for="humidity">Humidity</label>
                             </div>
                         </Col>
                     </Row>
@@ -117,7 +122,7 @@ const CurrentWeatherCardBack = (props) => {
                                 <input class="form-check-input" type="checkbox" id="wind"
                                     onChange={(e) => toggleCustomUI(e.target.id)}
                                     checked={props.customUIElements.wind ? "checked" : ""} />
-                                <label class="form-check-label" for="windCheckBox">Wind</label>
+                                <label class="form-check-label" for="wind">Wind</label>
                             </div>
                         </Col>
                     </Row>
@@ -127,7 +132,7 @@ const CurrentWeatherCardBack = (props) => {
                                 <input class="form-check-input" type="checkbox" id="cloudiness"
                                     onChange={(e) => toggleCustomUI(e.target.id)}
                                     checked={props.customUIElements.cloudiness ? "checked" : ""} />
-                                <label class="form-check-label" for="cloudinessCheckBox">Cloudiness</label>
+                                <label class="form-check-label" for="cloudiness">Cloudiness</label>
                             </div>
                         </Col>
                     </Row>
@@ -141,7 +146,7 @@ const CurrentWeatherCardBack = (props) => {
                                 <input class="form-check-input" type="checkbox" id="minmax"
                                     onChange={(e) => toggleCustomUI(e.target.id)}
                                     checked={props.customUIElements.minmax ? "checked" : ""} />
-                                <label class="form-check-label" for="minmaxCheckBox">Min Max</label>
+                                <label class="form-check-label" for="minmax">Min Max</label>
                             </div>
                         </Col>
                     </Row>
@@ -151,7 +156,7 @@ const CurrentWeatherCardBack = (props) => {
                                 <input class="form-check-input" type="checkbox" id="feels"
                                     onChange={(e) => toggleCustomUI(e.target.id)}
                                     checked={props.customUIElements.feels ? "checked" : ""} />
-                                <label class="form-check-label" for="feelsCheckBox">Feels like</label>
+                                <label class="form-check-label" for="feels">Feels like</label>
                             </div>
                         </Col>
                     </Row>
@@ -165,7 +170,7 @@ const CurrentWeatherCardBack = (props) => {
                                 <input class="form-check-input" type="checkbox" id="lonlat"
                                     onChange={(e) => toggleCustomUI(e.target.id)}
                                     checked={props.customUIElements.lonlat ? "checked" : ""} />
-                                <label class="form-check-label" for="lonlatCheckBox">Lon Lat</label>
+                                <label class="form-check-label" for="lonlat">Lon Lat</label>
                             </div>
                         </Col>
                     </Row>
@@ -175,7 +180,7 @@ const CurrentWeatherCardBack = (props) => {
                                 <input class="form-check-input" type="checkbox" id="sun"
                                     onChange={(e) => toggleCustomUI(e.target.id)}
                                     checked={props.customUIElements.sun ? "checked" : ""} />
-                                <label class="form-check-label" for="sunCheckBox">Sunrise/set</label>
+                                <label class="form-check-label" for="sun">Sunrise/set</label>
                             </div>
                         </Col>
                     </Row>
