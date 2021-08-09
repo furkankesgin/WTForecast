@@ -23,10 +23,10 @@ const CityInfo = (props) => {
                                 <p className="h6 mb-1"><small className="text-secondary">Lat:{props.weather.coord ? props.weather.coord.lat : "-"}</small></p>
                             </Col>
                         </>
-                    : ""
+                        : ""
                 }
             </Row>
-            
+
             {/* sunrise - sunset */}
             <Row className="row-cols-auto">
                 {
@@ -39,7 +39,7 @@ const CityInfo = (props) => {
                                 <p className="h6 mb-0"><small className="text-secondary">Sunset:{props.weather.sys ? prettifyDate(props.weather.sys.sunset).split(", ")[1] : "-"}</small></p>
                             </Col>
                         </>
-                    : ""
+                        : ""
                 }
             </Row>
         </>

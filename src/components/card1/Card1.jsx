@@ -21,32 +21,32 @@ const Card1 = (props) => {
     }
 
     return (
-        <Card className="card-color1 p-3">
+        <Card className="color-primary p-3">
             {/* settings button */}
             <Row>
                 <Col className="col-xxl-10 col-xl-10 col-lg-10 col-md-10 col-sm-10 col-10">
                     <CityInfo weather={props.weather} customUIElements={props.customUIElements} />
                 </Col>
                 <Col className="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
-                    <SettingsButton className="float-end" onClick={toggleSettingsMenu}><p className="display-6">⚙</p></SettingsButton>
+                    <SettingsButton className="float-end" onClick={toggleSettingsMenu}><p className="display-6"><img className="m-0 p-0" src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Settings-icon.png" alt="aa" width="52" height="52"></img></p></SettingsButton>
                 </Col>
             </Row>
 
             {/* inner card */}
             <Row className="mt-2">
                 <Col>
-                    <CurrentWeatherCard 
-                        weather={props.weather} 
+                    <CurrentWeatherCard
+                        weather={props.weather}
 
-                        isFront={isFront} 
+                        isFront={isFront}
 
-                        isCityValid={props.isCityValid} 
-                        setCitySearch={props.setCitySearch} 
+                        isCityValid={props.isCityValid}
+                        setCitySearch={props.setCitySearch}
 
-                        unit={props.unit} 
-                        setUnit={props.setUnit} 
+                        unit={props.unit}
+                        setUnit={props.setUnit}
 
-                        customUIElements={props.customUIElements} 
+                        customUIElements={props.customUIElements}
                         setCustomUIElements={props.setCustomUIElements}
                     />
                 </Col>

@@ -4,14 +4,15 @@ import { weekDay } from "../../helpers/dateTime";
 import { convertTemp } from "../../helpers/convertUnits"
 import { useEffect, useState } from 'react'
 import UNITS from "../../statics/UNITS";
+import COLORS from "../../statics/COLORS";
 
 const Graph = (props) => {
 	const buildGraphDataset = () => {
 		let days = [], temp = [], humidity = [];
 
-		if(props.allList.list){
-			props.allList.list.map((weather) => {		
-				if(splitByHour(weather, "12")){
+		if (props.allList.list) {
+			props.allList.list.map((weather) => {
+				if (splitByHour(weather, "12")) {
 					days.push(weekDay(new Date(weather.dt * 1000).getDay()));
 					temp.push(convertTemp({ temp: weather.main.temp, unit: props.unit }));
 					humidity.push(weather.main.humidity);
@@ -40,7 +41,6 @@ const Graph = (props) => {
 
 	const visibilityFunctions = [setTempVisibility, setHumidityVisibility, setbbVisibility];
 
-
 	const data = {
 		labels: days,
 		datasets: [
@@ -48,8 +48,8 @@ const Graph = (props) => {
 				type: 'line',
 				label: 'Temperature' + UNITS[props.unit].temp,
 				hidden: tempInvisibility,
-				backgroundColor: '#17B978',
-				borderColor: 'white',
+				backgroundColor: COLORS.dark.background_color,
+				borderColor: COLORS.dark.text_important,
 				data: temperatureDataset,
 				fill: true
 			},
@@ -58,8 +58,8 @@ const Graph = (props) => {
 				type: 'line',
 				label: 'Humidity' + UNITS[props.unit].humidity,
 				hidden: humidityInvisibility,
-				backgroundColor: '#17B978',
-				borderColor: 'white',				
+				backgroundColor: COLORS.dark.background_color,
+				borderColor: COLORS.dark.text_important,
 				data: humidityDataset,
 				borderWidth: 2,
 				fill: true,
@@ -69,8 +69,8 @@ const Graph = (props) => {
 				type: 'line',
 				label: 'bb' + UNITS[props.unit].humidity,
 				hidden: bbInvisibility,
-				backgroundColor: '#17B978',
-				borderColor: 'white',				
+				backgroundColor: COLORS.dark.background_color,
+				borderColor: COLORS.dark.text_important,
 				data: humidityDataset,
 				borderWidth: 2,
 				fill: true,
@@ -103,7 +103,7 @@ const Graph = (props) => {
 				},
 
 				labels: {
-					color: "#17B978",
+					color: COLORS.dark.text_primary,
 					font: {
 						size: 20
 					}
@@ -120,8 +120,8 @@ const Graph = (props) => {
 
 			y: {
 				ticks: {
-					stepSize: 3,					
-					color: "#17B978",
+					stepSize: 3,
+					color: COLORS.dark.text_primary,
 					// beginAtZero: true,
 					font: {
 						size: 20
@@ -132,7 +132,7 @@ const Graph = (props) => {
 			x: {
 				ticks: {
 					stepSize: 1,
-					color: "#17B978",
+					color: COLORS.dark.text_primary,
 					// beginAtZero: true,						
 					font: {
 						size: 20
