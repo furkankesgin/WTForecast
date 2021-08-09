@@ -4,7 +4,8 @@ import { weekDay } from "../../helpers/dateTime";
 import { convertTemp } from "../../helpers/convertUnits"
 import { useEffect, useState } from 'react'
 import UNITS from "../../statics/UNITS";
-import COLORS from "../../statics/COLORS";
+import { withTheme } from 'styled-components';
+
 
 const Graph = (props) => {
 	const buildGraphDataset = () => {
@@ -48,8 +49,8 @@ const Graph = (props) => {
 				type: 'line',
 				label: 'Temperature' + UNITS[props.unit].temp,
 				hidden: tempInvisibility,
-				backgroundColor: COLORS.dark.background_color,
-				borderColor: COLORS.dark.text_important,
+				backgroundColor: props.theme.color_secondary,
+				borderColor: props.theme.text_important,
 				data: temperatureDataset,
 				fill: true
 			},
@@ -58,8 +59,8 @@ const Graph = (props) => {
 				type: 'line',
 				label: 'Humidity' + UNITS[props.unit].humidity,
 				hidden: humidityInvisibility,
-				backgroundColor: COLORS.dark.background_color,
-				borderColor: COLORS.dark.text_important,
+				backgroundColor: props.theme.color_secondary,
+				borderColor: props.theme.text_important,
 				data: humidityDataset,
 				borderWidth: 2,
 				fill: true,
@@ -69,8 +70,8 @@ const Graph = (props) => {
 				type: 'line',
 				label: 'bb' + UNITS[props.unit].humidity,
 				hidden: bbInvisibility,
-				backgroundColor: COLORS.dark.background_color,
-				borderColor: COLORS.dark.text_important,
+				backgroundColor: props.theme.color_secondary,
+				borderColor: props.theme.text_important,
 				data: humidityDataset,
 				borderWidth: 2,
 				fill: true,
@@ -103,7 +104,7 @@ const Graph = (props) => {
 				},
 
 				labels: {
-					color: COLORS.dark.text_primary,
+					color: props.theme.text_primary,
 					font: {
 						size: 20
 					}
@@ -121,7 +122,7 @@ const Graph = (props) => {
 			y: {
 				ticks: {
 					stepSize: 3,
-					color: COLORS.dark.text_primary,
+					color: props.theme.text_primary,
 					// beginAtZero: true,
 					font: {
 						size: 20
@@ -132,7 +133,7 @@ const Graph = (props) => {
 			x: {
 				ticks: {
 					stepSize: 1,
-					color: COLORS.dark.text_primary,
+					color: props.theme.text_primary,
 					// beginAtZero: true,						
 					font: {
 						size: 20
@@ -149,4 +150,5 @@ const Graph = (props) => {
 	);
 }
 
-export default Graph;
+// withTheme is for using global styles here
+export default withTheme(Graph);
