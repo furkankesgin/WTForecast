@@ -6,6 +6,14 @@ import { Card } from 'react-bootstrap';
 
 const HeaderStyle = styled(Card)`
 
+    /* theme */
+    color: ${ props  => props.theme.text_primary };
+    background-color: ${ props  => props.theme.background_color };
+
+    header{
+        font-family: "Handlee";
+    }
+
     .flip-card { 
         perspective: 1000px;
         width: 100%;
@@ -29,6 +37,10 @@ const HeaderStyle = styled(Card)`
 `;
 
 const HeaderFrontStyle = styled(Card)`
+    /* theme */
+    color: ${ props  => props.theme.text_primary };
+    background-color: ${ props  => props.theme.background_color };
+    
     width: 100%;
     position: relative;
     backface-visibility: hidden;
@@ -37,6 +49,10 @@ const HeaderFrontStyle = styled(Card)`
 `;
 
 const HeaderBackStyle = styled(Card)`
+    /* theme */
+    color: ${ props  => props.theme.text_primary };
+    background-color: ${ props  => props.theme.background_color };
+
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
@@ -45,7 +61,6 @@ const HeaderBackStyle = styled(Card)`
     position: absolute;
     top: 0;
     transform: rotateX(180deg);
-
     /* bootstrap 5 sizes
     <576px	xs
     ≥576px	sm
