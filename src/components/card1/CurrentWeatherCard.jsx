@@ -27,6 +27,9 @@ const CurrentWeatherCard = (props) => {
                 
                 customUIElements={props.customUIElements} 
                 setCustomUIElements={props.setCustomUIElements}
+
+                theme={props.theme}
+                setTheme={props.setTheme}
             />
 
         </ReactCardFlip>

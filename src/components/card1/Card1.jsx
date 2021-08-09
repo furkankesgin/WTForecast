@@ -32,6 +32,7 @@ const Card1 = (props) => {
                 </Col>
             </Row>
 
+
             {/* inner card */}
             <Row className="mt-2">
                 <Col>
@@ -48,6 +49,9 @@ const Card1 = (props) => {
 
                         customUIElements={props.customUIElements}
                         setCustomUIElements={props.setCustomUIElements}
+
+                        theme={props.theme}
+                        setTheme={props.setTheme}
                     />
                 </Col>
             </Row>
