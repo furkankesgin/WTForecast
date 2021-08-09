@@ -1,27 +1,14 @@
 import { createGlobalStyle } from "styled-components";
-import COLORS from "../statics/COLORS";
 
 const GlobalStyles = createGlobalStyle`
-    /* :root{
-        --color-primary: ${COLORS.light.color_primary};
-        --color-secondary: ${COLORS.light.color_secondary};
-
-        --text-primary: ${COLORS.light.text_primary};
-        --text-secondary: ${COLORS.light.text_secondary};
-
-        --background-color: ${COLORS.light.background_color};
-        --text-important: ${COLORS.light.text_important};
-    } */
-
     :root{
-        --color-primary: ${COLORS.dark.color_primary};
-        --color-secondary: ${COLORS.dark.color_secondary};
+        --background-color: ${ props  => props.theme.background_color };        
+        --color-primary: ${ props  => props.theme.color_primary };
+        --color-secondary: ${ props  => props.theme.color_secondary };
         
-        --text-primary: ${COLORS.dark.text_primary};
-        --text-secondary: ${COLORS.dark.text_secondary};
-        
-        --background-color: ${COLORS.dark.background_color};
-        --text-important: ${COLORS.dark.text_important};
+        --text-primary: ${ props  => props.theme.text_primary };
+        --text-secondary: ${ props  => props.theme.text_secondary };
+        --text-important: ${ props  => props.theme.text_important };
     }
 
     *{
@@ -37,15 +24,6 @@ const GlobalStyles = createGlobalStyle`
         font-family: Arial, Helvetica, sans-serif;
         background-color: var(--background-color) !important;
         color: var(--text-primary);
-        
-    }
-
-    .header{
-        header{
-            font-family: "Handlee";
-        }
-        color: var(---text-primary);
-        background-color: var(--background-color);
     }
 
     .card{
@@ -62,9 +40,6 @@ const GlobalStyles = createGlobalStyle`
     }
 
 
-    .text-primary{
-        color: var(--text-primary);
-    }
 
     .text-secondary{
         color: var(--text-secondary) !important;
@@ -73,6 +48,12 @@ const GlobalStyles = createGlobalStyle`
     .text-important{
         color: var(--text-important) !important;
     }
+
+    a{
+        color: var(--color-secondary) !important;
+    }
+
+
 
     /* img, svg{
         border: 2px #02b7c2 solid;
