@@ -4,9 +4,6 @@ import styled from 'styled-components';
 const SettingsButton = styled.button`
     background: inherit;
     color: inherit;
-
-    border: 2px solid white;
-    font-size: 35px;
     border: 0ch;
     cursor: pointer;
     
