@@ -12,6 +12,7 @@ import CurrentWeatherCard from "./CurrentWeatherCard"
 import CityInfo from "./CityInfo"
 
 
+
 const Card1 = (props) => {
 
     // card flipper state
@@ -32,7 +33,6 @@ const Card1 = (props) => {
                 </Col>
             </Row>
 
-
             {/* inner card */}
             <Row className="mt-2">
                 <Col>
@@ -52,6 +52,9 @@ const Card1 = (props) => {
 
                         theme={props.theme}
                         setTheme={props.setTheme}
+
+                        useSystemTheme={props.useSystemTheme}
+                        setUseSystemTheme={props.setUseSystemTheme}
                     />
                 </Col>
             </Row>

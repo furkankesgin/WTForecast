@@ -30,6 +30,9 @@ const CurrentWeatherCard = (props) => {
 
                 theme={props.theme}
                 setTheme={props.setTheme}
+
+                useSystemTheme={props.useSystemTheme}
+                setUseSystemTheme={props.setUseSystemTheme}
             />
 
         </ReactCardFlip>

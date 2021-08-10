@@ -1,9 +1,9 @@
 // react
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 // bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container } from 'react-bootstrap'
+import { Container } from 'react-bootstrap';
 
 // styled components
 import GlobalStyles from "./styles/GlobalStyles";
@@ -24,11 +24,13 @@ import THEMES from "./statics/THEMES";
 import DEFAULTS from "./statics/DEFAULTS";
 
 // helpers
-// import useEffectAfterMount from './helpers/useEffectAfterMount'
-import Storage from './helpers/Storage'
+import Storage from './helpers/Storage';
 
-// debounce hook
-import { useDebounce } from '@react-hook/debounce'
+// hooks
+import { useDebounce } from '@react-hook/debounce';
+import useThemeDetector from "./hooks/useThemeDetector";
+import useDynamicTitle from './hooks/useDynamicTitle';
+import useStateWithAutoSave from './hooks/useStateWithAutoSave';
 
 
 function App() {
@@ -43,33 +45,32 @@ function App() {
 	// settings menu states
 	const [citySearch, setCitySearch] = useDebounce("", 1000);
 	const [isCityValid, setIsCityValid] = useState("");
-	const [city, setCity] = useState(storage.getItemFromStorageWithDefaultFallback("city"));
+	const [city, setCity] = useStateWithAutoSave({storage:storage, storageName:"city"});
 
-	const [unit, setUnit] = useState(storage.getItemFromStorageWithDefaultFallback("unit"));
-	const [customUIElements, setCustomUIElements] = useState(storage.getItemFromStorageWithDefaultFallback("customUIElements"));
+	const [unit, setUnit]  = useStateWithAutoSave({storage:storage, storageName:"unit"});
+	const [customUIElements, setCustomUIElements] = useStateWithAutoSave({storage:storage, storageName:"customUIElements"});
 
 	// theme
-	const [theme, setTheme] = useState(storage.getItemFromStorageWithDefaultFallback("theme"));
+	const [theme, setTheme]  = useStateWithAutoSave({storage:storage, storageName:"theme"});
+	const [useSystemTheme, setUseSystemTheme] = useStateWithAutoSave({storage:storage, storageName:"useSystemTheme"});
+	const isPreferredThemeDark = useThemeDetector();
+
+	// dynamic title
+	useDynamicTitle(weather, unit);
 
 
 	useEffect(() => {
-		storage.setToStorage({ theme: theme });
-	}, [theme])
-
-
-	useEffect(() => {
-		storage.setToStorage({ customUIElements: customUIElements });
-	}, [customUIElements])
-
-
-	useEffect(() => {
-		storage.setToStorage({ unit: unit });
-	}, [unit])
-
-
-	useEffect(() => {
-		storage.setToStorage({ city: city });
-	}, [city])
+		// change theme with using system theme
+		if (useSystemTheme) {
+			if (isPreferredThemeDark) {
+				setTheme("dark");
+			}
+			else {
+				setTheme("light");
+			}
+		}
+		storage.setToStorage({ useSystemTheme: useSystemTheme });
+	}, [theme, useSystemTheme, isPreferredThemeDark])
 
 
 	// on citySearch
@@ -136,7 +137,6 @@ function App() {
 	}, [])
 
 
-
 	return (
 		<Container>
 			<ThemeProvider theme={THEMES[theme] ? THEMES[theme] : THEMES[DEFAULTS.theme]}>
@@ -157,6 +157,9 @@ function App() {
 
 					theme={theme}
 					setTheme={setTheme}
+
+					useSystemTheme={useSystemTheme}
+					setUseSystemTheme={setUseSystemTheme}
 				/>
 
 				<Card2 forecast={forecast} unit={unit} />

@@ -18,6 +18,11 @@ const CurrentWeatherCardBack = (props) => {
         props.setTheme(theme);
     }
 
+    const changeUseSystemTheme = () => {
+        // toggle useSystemTheme
+        props.setUseSystemTheme(!props.useSystemTheme);
+    }
+
     return (
         <Card className="color-secondary p-3">
             <Row>
@@ -69,7 +74,10 @@ const CurrentWeatherCardBack = (props) => {
                     <div className="form-check">
                         <input className="form-check-input" type="radio" id="light" name="themeRadio"
                             checked={props.theme === "light" ? "checked" : ""}
-                            onChange={(e) => changeTheme(e.target.id)} />
+                            onChange={(e) => changeTheme(e.target.id)}
+
+                            // disable if useSystemTheme selected
+                            disabled={props.useSystemTheme === true ? "disabled" : ""} />
 
                         <label className="form-check-label" for="light">
                             Light
@@ -79,10 +87,24 @@ const CurrentWeatherCardBack = (props) => {
                     <div className="form-check">
                         <input className="form-check-input" type="radio" id="dark" name="themeRadio"
                             checked={props.theme === "dark" ? "checked" : ""}
-                            onChange={(e) => changeTheme(e.target.id)} />
+                            onChange={(e) => changeTheme(e.target.id)}
+
+                            // disable if useSystemTheme selected
+                            disabled={props.useSystemTheme === true ? "disabled" : ""} />
 
                         <label className="form-check-label" for="dark">
                             Dark
+                        </label>
+                    </div>
+
+                    {/* use system theme */}
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="useSystemTheme"
+                            checked={props.useSystemTheme === true ? "checked" : ""}
+                            onChange={(e) => changeUseSystemTheme()} />
+
+                        <label class="form-check-label" for="useSystemTheme">
+                            Use system
                         </label>
                     </div>
                 </Col>

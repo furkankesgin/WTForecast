@@ -83,7 +83,7 @@ const CurrentWeatherCardFront = (props) => {
                     <Card className="color-secondary">
                         <img className="align-self-center" src={props.weather.weather ? iconBaseURL + props.weather.weather[0].icon + "@2x.png" : placeHolderImageURL} alt="weather icon" width="100" height="100"></img>
                         <div class="card-body">
-                            <p className="text-important h5 text-center">{props.weather.weather ? props.weather.weather[0].description : "-"}</p>
+                            <p className="h5 text-center">{props.weather.weather ? props.weather.weather[0].description : "-"}</p>
                             {/* <h6 className="text-center">thunderstorm with heavy drizzle</h6> */}
                         </div>
                     </Card>

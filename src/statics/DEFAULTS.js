@@ -1,6 +1,5 @@
 const DEFAULTS = {
-    "customUIElements":
-    {
+    "customUIElements": {
         "pressure": true,
         "humidity": true,
         "wind": true,
@@ -13,7 +12,8 @@ const DEFAULTS = {
 
     "unit": "metric",
     "city": "istanbul",
-    "theme": "light"
+    "theme": "light",
+    "useSystemTheme": true
 }
 
 export default DEFAULTS;
