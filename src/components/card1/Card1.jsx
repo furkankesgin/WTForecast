@@ -11,14 +11,15 @@ import { SettingsButton } from "../../styles/card1/Card1Styles.jsx"
 import CurrentWeatherCard from "./CurrentWeatherCard"
 import CityInfo from "./CityInfo"
 
-
+// settings button image
+import settingsIconPath from "../../images/Settings-icon.png"
 
 const Card1 = (props) => {
 
     // card flipper state
     const [isFront, setIsFront] = useState(false);
     const toggleSettingsMenu = () => {
-        setIsFront(!isFront)
+        setIsFront(!isFront);
     }
 
     return (
@@ -29,7 +30,7 @@ const Card1 = (props) => {
                     <CityInfo weather={props.weather} customUIElements={props.customUIElements} />
                 </Col>
                 <Col className="col-xxl-2 col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
-                    <SettingsButton className="float-end" onClick={toggleSettingsMenu}><p className="display-6"><img className="m-0 p-0" src="https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Settings-icon.png" alt="aa" width="52" height="52"></img></p></SettingsButton>
+                    <SettingsButton className="float-end" onClick={toggleSettingsMenu}><p className="display-6"><img className="m-0 p-0" src={settingsIconPath} alt="settings_icon" width="42" height="42"></img></p></SettingsButton>
                 </Col>
             </Row>
 
