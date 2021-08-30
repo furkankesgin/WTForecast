@@ -10,10 +10,10 @@ class Storage{
 
     // ---------- set ---------- //
 
-    setToStorage(newItems){
+    addItemToStorage(newItems){
         // adds new items to local storage
 
-        let items = this.getFromStorage();
+        let items = this.getItemsFromStorage();
         localStorage.setItem(this.saveName, JSON.stringify({...items, ...newItems}));
     }
 
@@ -23,14 +23,14 @@ class Storage{
 
     // ---------- get ---------- //
 
-    getFromStorage(){
+    getItemsFromStorage(){
         // returns all values from the storage
 
         let items = JSON.parse(localStorage.getItem(this.saveName));
         return items;
     }
 
-    getFromStorageWithDefaultFallback(){
+    getItemsFromStorageWithDefaultFallback(){
         // returns all values from storage, if not exists returns all defaults
 
         const items = JSON.parse(localStorage.getItem(this.saveName));
@@ -45,7 +45,7 @@ class Storage{
     getItemFromStorageWithDefaultFallback(item){
         // returns the value for an item from storage, if not exists returns default value for that item
 
-        return this.getFromStorageWithDefaultFallback()[item];
+        return this.getItemsFromStorageWithDefaultFallback()[item];
     }   
 
     // ---------- ---------- ---------- //
@@ -57,7 +57,7 @@ class Storage{
     deleteItemFromStorage(item){
         // deletes an item from storage
 
-        const items = this.getFromStorage();
+        const items = this.getItemsFromStorage();
         if(item in items){
             delete items[item];
             localStorage.setItem(this.saveName, JSON.stringify(items));
