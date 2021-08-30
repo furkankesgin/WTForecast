@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useThemeDetector = () => {
+const useSystemThemeDetector = () => {
 	// returns trie if system theme is dark
 
 	const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -15,4 +15,4 @@ const useThemeDetector = () => {
 	return isDarkTheme;
 }
 
-export default useThemeDetector;
+export default useSystemThemeDetector;
