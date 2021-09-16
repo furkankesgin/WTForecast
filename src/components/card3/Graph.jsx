@@ -1,7 +1,7 @@
 import { Line } from 'react-chartjs-2';
 import { splitByHour } from "../../helpers/splitByHour";
 import { weekDay } from "../../helpers/dateTime";
-import { convertTemp } from "../../helpers/convertUnits"
+import { convertTemp, convertSpeed } from "../../helpers/convertUnits"
 import { useEffect, useState } from 'react'
 import UNITS from "../../statics/UNITS";
 import { withTheme } from 'styled-components';
@@ -9,7 +9,7 @@ import { withTheme } from 'styled-components';
 
 const Graph = (props) => {
 	const buildGraphDataset = () => {
-		let days = [], temp = [], humidity = [];
+		let days = [], temp = [], humidity = [], wind = [];
 
 		if (props.allList.list) {
 			props.allList.list.map((weather) => {
@@ -17,30 +17,32 @@ const Graph = (props) => {
 					days.push(weekDay(new Date(weather.dt * 1000).getDay()));
 					temp.push(convertTemp({ temp: weather.main.temp, unit: props.unit }));
 					humidity.push(weather.main.humidity);
+					wind.push(convertSpeed({ speed: weather.wind.speed, unit: props.unit }));
 				}
 			})
 		}
 
-		return { days: days, temp: temp, humidity: humidity }
+		return { days: days, temp: temp, humidity: humidity, wind: wind }
 	}
 
 	useEffect(() => {
-		const { days, temp, humidity } = buildGraphDataset();
+		const { days, temp, humidity, wind } = buildGraphDataset();
 		setDays(days);
 		setTemperatureDataset(temp);
 		setHumidityDataset(humidity);
+		setWindDataset(wind)
 	}, [props.allList, props.unit]);
 
 	const [days, setDays] = useState('');
 	const [temperatureDataset, setTemperatureDataset] = useState('');
 	const [humidityDataset, setHumidityDataset] = useState('');
-
+	const [windyDataset, setWindDataset] = useState('');
 
 	const [tempInvisibility, setTempVisibility] = useState(false);
 	const [humidityInvisibility, setHumidityVisibility] = useState(true);
-	const [bbInvisibility, setbbVisibility] = useState(true);
+	const [windInvisibility, setWindVisibility] = useState(true);
 
-	const visibilityFunctions = [setTempVisibility, setHumidityVisibility, setbbVisibility];
+	const visibilityFunctions = [setTempVisibility, setHumidityVisibility, setWindVisibility];
 
 	const data = {
 		labels: days,
@@ -57,7 +59,7 @@ const Graph = (props) => {
 
 			{
 				type: 'line',
-				label: 'Humidity' + UNITS[props.unit].humidity,
+				label: 'Humidity ' + UNITS[props.unit].humidity,
 				hidden: humidityInvisibility,
 				backgroundColor: props.theme.color_secondary,
 				borderColor: props.theme.text_important,
@@ -68,11 +70,11 @@ const Graph = (props) => {
 
 			{
 				type: 'line',
-				label: 'bb' + UNITS[props.unit].humidity,
-				hidden: bbInvisibility,
+				label: 'Wind ' + UNITS[props.unit].wind,
+				hidden: windInvisibility,
 				backgroundColor: props.theme.color_secondary,
 				borderColor: props.theme.text_important,
-				data: humidityDataset,
+				data: windyDataset,
 				borderWidth: 2,
 				fill: true,
 			}
@@ -86,12 +88,6 @@ const Graph = (props) => {
 
 		indexAxis: 'x',
 		responsive: true,
-
-		// elements: {
-		// 	bar: {
-		// 		borderWidth: 2,
-		// 	},
-		// },
 
 		plugins: {
 			legend: {
@@ -110,15 +106,9 @@ const Graph = (props) => {
 					}
 				}
 			},
-
-			// title: {
-			// 	display: true,
-			// 	text: 'Chart.js Horizontal Bar Chart',
-			// },
 		},
 
 		scales: {
-
 			y: {
 				ticks: {
 					stepSize: 3,
@@ -146,7 +136,7 @@ const Graph = (props) => {
 	};
 
 	return (
-		<Line data={data} options={options} />
+		<Line data={ data } options={ options } />
 	);
 }
 
