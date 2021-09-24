@@ -6,3 +6,13 @@
 <br>
 
 ### Visit [WTForecast](https://cccaaannn.github.io/WTForecast/) website
+
+<br>
+
+### Run WTForecast on Docker
+* Change the `homepage` from the `package.json` before building.
+```shell
+docker build -t cccaaannn/wtforecast --build-arg OPENWEATHERMAP_API_KEY=<YOUR_OPENWEATHERMAP_API_KEY> .
+docker run -d -p 80:80/tcp --name WTForecast cccaaannn/wtforecast
+```
+
